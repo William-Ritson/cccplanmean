@@ -6,6 +6,7 @@
                     <label for="college">Transfer from</label>
                     <select id="college" style="display:inline; width: 60%" class="form-control"\
                             ng-model="from"
+                            ng-change="changeFrom()"
                             ng-options="school.title group by school.type for school in fromSchools"> 
                     </select>
                 </th>
@@ -28,11 +29,18 @@
                 </th>
             </tr>
         </thead>
-        <tbody>
+        <tbody ng-hide="loading">
             <tr ng-repeat="row in rows">
                 <td>{{row[1]}}</td>
                 <td>{{row[0]}}</td>
             </tr>
         </tbody>
-    </table>    
+    </table>
+    <div ng-show="loading">
+        <span class="load-indicator">Loading...</span>
+    </div>
+    <div ng-show="error">
+        <span>{{error}}</span>
+        <button class="btn btn-primary" ng-click="retry()">Retry</button>
+    </div>
 </section>
