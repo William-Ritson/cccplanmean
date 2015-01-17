@@ -1,0 +1,38 @@
+<section data-ng-controller="TransferController">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <label for="college">Transfer from</label>
+                    <select id="college" style="display:inline; width: 60%" class="form-control"\
+                            ng-model="from"
+                            ng-options="school.title group by school.type for school in fromSchools"> 
+                    </select>
+                </th>
+                <th>
+                    <label style="display: inline">Transfer to
+                        <select style="display: inline; width: 30%" class="form-control"
+                                ng-model="to"
+                                ng-options="school.title group by school.type for school in toSchools">
+                            <option>-- Select a School to Transfer to --</option>
+                        </select>
+                    </label>
+                    <label style="display: inline">Major
+                        <select style="display: inline; width: 30%" class="form-control"
+                                ng-disabled ="!to.major"
+                                ng-change="getAgreement()"
+                                ng-model="major"
+                                ng-options="major.id as major.title group by major.type for major in to.major">
+                        </select>
+                    </label>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in rows">
+                <td>{{row[1]}}</td>
+                <td>{{row[0]}}</td>
+            </tr>
+        </tbody>
+    </table>    
+</section>
