@@ -1,0 +1,7 @@
+#transfer-table {
+ table-layout: fixed;
+}
+
+#transfer-table tr {
+    max-width: 200px;
+}

@@ -1,5 +1,5 @@
 <section data-ng-controller="TransferController">
-    <table class="table">
+    <table id="transfer-table" class="table">
         <thead>
             <tr>
                 <th>
@@ -31,8 +31,8 @@
         </thead>
         <tbody ng-hide="loading">
             <tr ng-repeat="row in rows">
-                <td>{{row[1]}}</td>
-                <td>{{row[0]}}</td>
+                <td ng-bind-html="row[1]"></td>
+                <td ng-bind-html="row[0]"></td>
             </tr>
         </tbody>
     </table>
